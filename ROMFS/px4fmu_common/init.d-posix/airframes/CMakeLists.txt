@@ -102,6 +102,7 @@ px4_add_romfs_files(
 	10030_gazebo-classic_px4vision
 
 	10040_sihsim_quadx
+	4200_sih_ou_x500_safe
 	10041_sihsim_airplane
 	10042_sihsim_xvert
 	10043_sihsim_standard_vtol
