@@ -1839,6 +1839,11 @@ MavlinkReceiver::handle_message_battery_status(mavlink_message_t *msg)
 void
 MavlinkReceiver::handle_message_serial_control(mavlink_message_t *msg)
 {
+	// OU-PX4 hardening (CVE-2026-1579): MAVLink carries no authentication in this release,
+	// so SERIAL_CONTROL would hand an interactive NuttX shell to any peer on the link.
+	// The shell is not used operationally. Drop the message unconditionally.
+	(void)msg;
+	return;
 	mavlink_serial_control_t serial_control_mavlink;
 	mavlink_msg_serial_control_decode(msg, &serial_control_mavlink);
 

@@ -1248,6 +1248,12 @@ Mavlink::pass_message(const mavlink_message_t *msg)
 MavlinkShell *
 Mavlink::get_shell()
 {
+	// OU-PX4 hardening: never instantiate the shell (see handle_message_serial_control).
+	// With no MavlinkShell object, MavlinkShell::available() (GHSA-j5w2-w79c-mqrw) is unreachable.
+	if (true) {
+		return nullptr;
+	}
+
 	if (!_mavlink_shell) {
 		MavlinkShell *shell = new MavlinkShell();
 
