@@ -109,3 +109,8 @@ param set-default COM_WIND_MAX 8
 param set-default COM_WIND_MAX_ACT 2
 param set-default EKF2_REQ_NSATS 8
 param set-default EKF2_REQ_EPH 2.0
+
+# ---- companion-computer path: if offboard setpoints stop (agent crash, dashboard hang), RETURN --
+# without this, an aircraft with no RC would hover in place until the battery died
+param set-default COM_OBL_RC_ACT 3
+param set-default COM_OF_LOSS_T 2.0
